@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from lasagne_laskuri import LasagneLaskuri
 
 app = Flask(__name__)
@@ -7,7 +7,7 @@ laskuri.load_from_file("lasagne.txt")
 
 @app.route('/')
 def index():
-    return app.send_static_file('index.html')
+    return app.send_from_directory('static', 'index.html')
 
 @app.route('/add_lasagne', methods=['GET'])
 def add_lasagne():
