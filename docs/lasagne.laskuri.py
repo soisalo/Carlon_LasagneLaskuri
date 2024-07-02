@@ -7,7 +7,7 @@ class LasagneLaskuri:
 
     def load_from_file(self, filename):
         try:
-            with open(filename, "r") as file:
+            with open("lasagne.txt", "r") as file:
                 for line in file:
                     key, value = line.strip().split(': ')
                     if key == 'lasagne_portions':
@@ -48,8 +48,8 @@ class LasagneLaskuri:
             'total_price': self.total_price
         }
 
-# Example usage:
-# laskuri = LasagneLaskuri()
-# laskuri.load_from_file("lasagne.txt")
-# laskuri.add_lasagne_portion(1)
-# laskuri.save_to_file("lasagne.txt")
+
+laskuri = LasagneLaskuri()
+laskuri.load_from_file("lasagne.txt")
+laskuri.add_lasagne_portion(1)
+laskuri.save_to_file("lasagne.txt")
