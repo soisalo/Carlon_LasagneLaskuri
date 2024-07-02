@@ -1,0 +1,4 @@
+lasagne_portions: 1
+grams_per_portion: 1000
+calories_per_portion: 1320
+price_per_portion: 3.75
