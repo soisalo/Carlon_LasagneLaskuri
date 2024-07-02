@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lasagne Laskuri</title>
+</head>
+<body>
+    <h1>Carlon Lasagne-Laskuri</h1>
+    
+    <div>
+        <label for="additional-portions">Kuinka monta annosta lasagnea Carlo on syönyt lisää?</label>
+        <input type="number" id="additional-portions" name="additional-portions" min="1" value="1">
+        <button onclick="addLasagnePortion()">Lisää</button>
+    </div>
+    
+    <div id="results">
+        <h2>Tulokset</h2>
+        <p id="lasagne-portions"></p>
+        <p id="total-grams"></p>
+        <p id="total-calories"></p>
+        <p id="total-price"></p>
+    </div>
+
+    <script>
+        function addLasagnePortion() {
+            var additionalPortions = parseInt(document.getElementById('additional-portions').value);
+            fetch('/add_lasagne?portions=' + additionalPortions)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('lasagne-portions').innerText = 'Carlo on syönyt ' + data.lasagne_portions + ' lasagne-annosta.';
+                    document.getElementById('total-grams').innerText = 'Carlo on syönyt ' + data.total_grams + ' grammaa lasagnea.';
+                    document.getElementById('total-calories').innerText = 'Carlo on saanut ' + data.total_calories + ' kcal lasagnesta.';
+                    document.getElementById('total-price').innerText = 'Carlon lasagne-annosten hinta on ' + data.total_price + ' euroa.';
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
+4. Python Flask Backend (Optional)
+If you want to run your Python script on a server and interact with it through AJAX calls from your HTML page, you can use Python Flask:
+
+Install Flask (pip install flask).
+Create a Flask app (app.py) that serves the HTML page and handles API requests:
+python
+Copy code
+from flask import Flask, jsonify, request
+from lasagne_laskuri import LasagneLaskuri
+
+app = Flask(__name__)
+laskuri = LasagneLaskuri()
+laskuri.load_from_file("lasagne.txt")
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
+@app.route('/add_lasagne', methods=['GET'])
+def add_lasagne():
+    portions = int(request.args.get('portions', 1))
+    laskuri.add_lasagne_portion(portions)
+    laskuri.save_to_file("lasagne.txt")
+    return jsonify(laskuri.get_totals())
+
+if __name__ == '__main__':
+    app.run(debug=True)
