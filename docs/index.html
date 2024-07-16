@@ -5,38 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lasagne Laskuri</title>
     <style>
-         body {
+        body {
             font-family: 'Lucida Console', 'Courier New'; 
             background-image: url("https://raw.githubusercontent.com/soisalo/Carlon_LasagneLaskuri/main/docs/carlo.jpg");
             background-size: cover; 
             background-attachment: fixed; 
+            margin: 0; /* Remove default margin */
+            height: 100vh; /* Full viewport height */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            color: white; /* Set font color to white */
         }
 
         h1 {
             font-family: 'Georgia', serif; /* Change the font for h1 elements */
+            color: white; /* Set font color to white */
         }
 
         /* Additional styles for specific elements */
-        #results p {
-            font-family: 'Courier New', monospace; /* Change the font for p elements within the #results div */
+        #results h2, #results h4, #results p {
+            color: white; /* Set font color to white for all elements within the #results div */
+        }
+
+        #results {
+            padding: 20px; /* Add some padding */
+            background: rgba(0, 0, 0, 0.5); /* Make background slightly transparent for readability */
         }
     </style>
 </head>
 <body>
-    
     <h1>Carlon Lasagne-Laskuri</h1>
     
     <div id="results">
         <h2>Tulokset</h2>
-        <h4>Carlo on syönyt 2.5 lasagnea</h4> 
-        <h4>Carlo on syönyt 2500 grammaa lasagnea</h4>
-        <h4>Carlo on saanut 3300 kCal lasagnesta</h4>
-        <h4>Carlo on käyttänyt 11.05 euroa lasagneen.</h4>
+        <h4>Carlo on syönyt tänä kesänä 2.5 lasagnea</h4> 
+        <h4>Eli 2500 grammaa lasagnea</h4>
+        <h4>Hän on saanut huikeat 3300 kCal lasagnesta</h4>
+        <h4>Carlo on tilillä on 11.05 euroa vähemmän rahaa lasagnen takia.</h4>
         <p id="lasagne-portions"></p>
         <p id="total-grams"></p>
         <p id="total-calories"></p>
         <p id="total-price"></p>
     </div>
-
 </body>
 </html>
