@@ -39,33 +39,58 @@
     
     <main id="results">
         <h2>Tulokset:</h2>
+        <h2>Carlo:</h2>
         <label for="lasagne-amount">Lisää lasagnen määrä (total): </label>
         <input type="number" id="lasagne-amount" name="lasagne-amount" min="0" step="0.1" value="2.5">
         <h4 id="lasagne-eaten">Carlo on syönyt tänä kesänä 2.5 lasagnea</h4> 
         <h4 id="lasagne-grams">Eli 2500 grammaa lasagnea</h4>
         <h4 id="lasagne-calories">Hän on saanut huikeat 3300 kCal lasagnesta</h4>
         <h4 id="lasagne-cost">Carlo on tilillä on 11.05 euroa vähemmän rahaa lasagnen takia.</h4>
+
+        <h2>Lasse:</h2>
+        <label for="lasagne-amount2">Lisää lasagnen määrä (total): </label>
+        <input type="number" id="lasagne-amount2" name="lasagne-amount2" min="0" step="0.1" value="2.5">
+        <h4 id="lasagne-eaten2">Lasse on syönyt tänä kesänä 2.5 lasagnea</h4> 
+        <h4 id="lasagne-grams2">Eli 2500 grammaa lasagnea</h4>
+        <h4 id="lasagne-calories2">Hän on saanut huikeat 3300 kCal lasagnesta</h4>
+        <h4 id="lasagne-cost2">Lassella on tilillä on 11.05 euroa vähemmän rahaa lasagnen takia.</h4>
     </main>
 
     <script>
         function updateLasagneData() {
-            const lasagneAmount = parseFloat(document.getElementById('lasagne-amount').value);
-            const gramsPerLasagna = 1000; // 1 lasagna = 1000 grams
-            const caloriesPerLasagna = 1320; // 1 lasagna = 1320 kCal
-            const costPerLasagna = 3.75; // 1 lasagna = 4.42 euros
+            const lasagneAmount1 = parseFloat(document.getElementById('lasagne-amount').value);
+            const gramsPerLasagna1 = 1000; // 1 lasagna = 1000 grams
+            const caloriesPerLasagna1 = 1320; // 1 lasagna = 1320 kCal
+            const costPerLasagna1 = 3.75; // 1 lasagna = 4.42 euros
 
-            const totalGrams = lasagneAmount * gramsPerLasagna;
-            const totalCalories = lasagneAmount * caloriesPerLasagna;
-            const totalCost = lasagneAmount * costPerLasagna;
+            const totalGrams1 = lasagneAmount * gramsPerLasagna;
+            const totalCalories1 = lasagneAmount * caloriesPerLasagna;
+            const totalCost1 = lasagneAmount * costPerLasagna;
 
-            document.getElementById('lasagne-eaten').innerText = `Carlo on syönyt tänä kesänä ${lasagneAmount} lasagnea`;
-            document.getElementById('lasagne-grams').innerText = `Eli ${totalGrams.toFixed(2)} grammaa lasagnea`;
-            document.getElementById('lasagne-calories').innerText = `Hän on saanut huikeat ${totalCalories.toFixed(2)} kCal lasagnesta`;
-            document.getElementById('lasagne-cost').innerText = `Carlo on tilillä on ${totalCost.toFixed(2)} euroa vähemmän rahaa lasagnen takia.`;
+            const lasagneAmount2 = parseFloat(document.getElementById('lasagne-amount').value);
+            const gramsPerLasagna2 = 1000; // 1 lasagna = 1000 grams
+            const caloriesPerLasagna2 = 1320; // 1 lasagna = 1320 kCal
+            const costPerLasagna2 = 3.75; // 1 lasagna = 4.42 euros
+
+            const totalGrams2 = lasagneAmount * gramsPerLasagna;
+            const totalCalories2 = lasagneAmount * caloriesPerLasagna;
+            const totalCost2 = lasagneAmount * costPerLasagna;
+
+            
+
+            document.getElementById('lasagne-eaten').innerText = `Carlo on syönyt tänä kesänä ${lasagneAmount1} lasagnea`;
+            document.getElementById('lasagne-grams').innerText = `Eli ${totalGrams1.toFixed(2)} grammaa lasagnea`;
+            document.getElementById('lasagne-calories').innerText = `Hän on saanut huikeat ${totalCalories1.toFixed(2)} kCal lasagnesta`;
+            document.getElementById('lasagne-cost').innerText = `Carlo on tilillä on ${totalCost1.toFixed(2)} euroa vähemmän rahaa lasagnen takia.`;
+
+            document.getElementById('lasagne-eaten2').innerText = `Lasse on syönyt tänä kesänä ${lasagneAmount2} lasagnea`;
+            document.getElementById('lasagne-grams2').innerText = `Eli ${totalGrams2.toFixed(2)} grammaa lasagnea`;
+            document.getElementById('lasagne-calories2').innerText = `Hän on saanut huikeat ${totalCalories2.toFixed(2)} kCal lasagnesta`;
+            document.getElementById('lasagne-cost2').innerText = `Lassella on tilillä on ${totalCost2.toFixed(2)} euroa vähemmän rahaa lasagnen takia.`;
         }
 
         document.getElementById('lasagne-amount').addEventListener('input', updateLasagneData);
-
+        document.getElementById('lasagne-amount2').addEventListener('input', updateLasagneData);
         // Initialize with default values
         updateLasagneData();
     </script>
